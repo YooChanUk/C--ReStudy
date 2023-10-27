@@ -24,6 +24,13 @@ int main()
 	clist.push_back(30);
 	clist.push_front(300);
 
+	CArr<int> myvector;
+	myvector.push_back(1);
+	myvector.push_back(2);
+	myvector.push_back(3);
+
+	CArr<int>::iterator myiter = myvector.begin();
+
 
 	return 0;
 }

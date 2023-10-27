@@ -36,9 +36,12 @@ public:
 	void push_back(const T& _data);
 	void push_front(const T& _data);
 
+
+
 public:
 	CList();
 	~CList();
+
 
 };
 

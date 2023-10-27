@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\AssortClass",
+    "\\AssortClass\\AssortClass"
   ],
+  "SelectedNode": "\\AssortClass\\AssortClass\\CList.h",
   "PreviewInSolutionExplorer": false
 }
