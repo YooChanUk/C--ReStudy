@@ -1,0 +1,4 @@
+﻿  test.cpp
+C:\Users\psbac\source\repos\AssortTest2\AssortTest2\test.cpp(33,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\psbac\source\repos\AssortTest2\AssortTest2\test.cpp(38,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  AssortTest2.vcxproj -> C:\Users\psbac\source\repos\AssortTest2\x64\Debug\AssortTest2.exe
