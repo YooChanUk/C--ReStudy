@@ -189,6 +189,7 @@ T& CArr<T>::operator[](int idx)
 template<typename T>
 typename CArr<T>::iterator CArr<T>::begin()
 {
+
 	//시작을 가리키는 이터레이터를 만들어 반환
 	if (0 == m_iCount)
 	{

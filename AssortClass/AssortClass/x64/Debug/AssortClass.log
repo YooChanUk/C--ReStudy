@@ -1,2 +1,13 @@
 ﻿  main.cpp
-  AssortClass.vcxproj -> C:\Users\psbac\source\repos\C--ReStudy\AssortClass\x64\Debug\AssortClass.exe
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\CArr.h(194,6): error C2248: 'CArr<int>::iterator::m_pArr': private 멤버('CArr<int>::iterator' 클래스에서 선언)에 액세스할 수 없습니다.
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\CArr.h(30,9): message : 'CArr<int>::iterator::m_pArr' 선언을 참조하십시오.
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\CArr.h(28,1): message : 'CArr<int>::iterator' 선언을 참조하십시오.
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\CArr.h(191,1): message : 클래스 템플릿 멤버 함수 'CArr<int>::iterator CArr<int>::begin(void)'을(를) 컴파일하는 중입니다.
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\main.cpp(26,22): message : 'main'에서 'CArr<int>::begin'에 대한 첫 번째 참조를 확인하세요.
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\main.cpp(21,12): message : 컴파일되는 클래스 템플릿 인스턴스화 'CArr<int>'에 대한 참조를 확인하세요.
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\CArr.h(195,6): error C2248: 'CArr<int>::iterator::m_pData': private 멤버('CArr<int>::iterator' 클래스에서 선언)에 액세스할 수 없습니다.
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\CArr.h(31,6): message : 'CArr<int>::iterator::m_pData' 선언을 참조하십시오.
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\CArr.h(28,1): message : 'CArr<int>::iterator' 선언을 참조하십시오.
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\CArr.h(196,6): error C2248: 'CArr<int>::iterator::m_iIdx': private 멤버('CArr<int>::iterator' 클래스에서 선언)에 액세스할 수 없습니다.
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\CArr.h(32,7): message : 'CArr<int>::iterator::m_iIdx' 선언을 참조하십시오.
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\CArr.h(28,1): message : 'CArr<int>::iterator' 선언을 참조하십시오.
