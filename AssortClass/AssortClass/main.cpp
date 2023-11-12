@@ -22,18 +22,29 @@ int main()
 	myvector.push_back(1);
 	myvector.push_back(2);
 	myvector.push_back(3);
+	myvector.push_back(4);
+	myvector.push_back(5);
+	myvector.push_back(6);
 
 	CArr<int>::iterator myiter = myvector.begin();
+	
 
-	int s = *myiter;
-
-	for (; myiter != myvector.end(); ++myiter)
+	for (myiter = myvector.begin(); myiter != myvector.end();)
 	{
-		cout << *myiter << endl;
+		if (1 <= *myiter && 5 >= *myiter)
+		{
+			myiter = myvector.erase(myiter);
+		}
+		else
+		{
+			++myiter;
+		}
 	}
 
-	--myiter;
-	int r = *myiter;
+	for (int i = 0; i < myvector.size(); ++i)
+	{
+		cout << myvector[i] << endl;
+	}
 
 
 	return 0;

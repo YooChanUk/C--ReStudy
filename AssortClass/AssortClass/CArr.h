@@ -14,12 +14,23 @@ public:
 	void push_back(const T& _idata);
 	void resize(int _iResizeCount);
 	void check();
+	int size()
+	{
+		return m_iCount;
+	}
 	
 	T& operator[] (int idx);
 
 	class iterator;//아래 인식하기위해 이터레이터가 있음
 	iterator begin();
 	iterator end();
+	iterator erase(iterator& _iter);
+
+	void clear()
+	{
+		m_iCount = 0;
+	}
+
 public:
 	CArr();
 	~CArr();
@@ -30,14 +41,16 @@ public:
 		CArr* m_pArr; //iterator가 가리킬 데이터를 관리하는 가변배열 주소
 		T* m_pData; // 데이터들의 시작 주소
 		int m_iIdx; // 가리키는 데이터의 인덱스
+		bool m_bVaild;
 
 	public:
 		T& operator *()
 		{
 			//iterator가 알고있는 주소가 달라지거나 iterator가 end를 가리키고 있는 경우
-			if (m_pArr->m_pData != m_pData || -1 == m_iIdx)
+			if (m_pArr->m_pData != m_pData || -1 == m_iIdx || !m_bVaild)
 			{
-				m_pData = m_pArr->m_pData;
+				//m_pData = m_pArr->m_pData;
+				assert(nullptr);
 			}
 
 			return m_pData[m_iIdx];
@@ -121,8 +134,9 @@ public:
 	public:
 		iterator()
 			:m_pArr(nullptr)
-			,m_pData(nullptr)
+			, m_pData(nullptr)
 			, m_iIdx(-1)
+			, m_bVaild(false)
 		{
 
 		}
@@ -131,8 +145,12 @@ public:
 			:m_pArr(_pArr)
 			,m_pData(_pData)
 			,m_iIdx(_iIdx)
+			, m_bVaild(false)
 		{
-
+			if (nullptr != _pArr && 0 <= _iIdx)
+			{
+				m_bVaild = true;
+			}
 		}
 
 
@@ -140,6 +158,8 @@ public:
 		{
 
 		}
+
+		friend class CArr;
 	};
 };
 
@@ -224,4 +244,36 @@ typename CArr<T>::iterator CArr<T>::end()
 	//끝의 다음을 가리키는 이터레이터를 만들어 반환
 	return iterator(this, m_pData, -1);
 
+}
+
+template<typename T>
+typename CArr<T>::iterator CArr<T>::erase(iterator& _iter)
+{
+	//iteraotr가 다른 요소를 가리키거나 end를 가리킨 경우 삭제불가
+	if (_iter.m_pArr != this || end() == _iter || _iter.m_iIdx >= m_iCount)
+	{
+		assert(nullptr);
+	}
+
+	//데이터 삭제 이행시에 뒤에있던 데이터를 앞으로 옮겨와야하기 떄문에
+	//어느정도의 루프를 돌아야하는가 만약 5개의 데이터가 있고 인덱스 1번째 데이터를 지운다고하면
+	//우리는 데이터 10개숫자에서 2번째의 데이터를 지운다.
+	// 1 [2] 3 4 5 (데이터) 
+ 	// 0 [1] 2 3 4 (인덱스)
+	// 1 [3] 4 5
+	// 0 [1] 2 3
+	//우리는 데이터를 3번 옮길것이기에 이 규칙상
+	//5개의 데이터 (가리키는 인덱스 + 1)을 빼면 5 - 2, 3번 옮기는것이다.
+	int iLoopCount = m_iCount - (_iter.m_iIdx + 1);
+	
+	for (int i = 0; i < iLoopCount; ++i)
+	{
+		m_pData[i + _iter.m_iIdx] = m_pData[i + _iter.m_iIdx + 1];
+	}
+
+	_iter.m_bVaild = false;
+
+	--m_iCount;
+
+	return iterator(this,m_pData,_iter.m_iIdx);
 }

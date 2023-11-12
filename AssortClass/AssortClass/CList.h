@@ -42,6 +42,19 @@ public:
 	CList();
 	~CList();
 
+	class iterator
+	{
+	private:
+		CList<T>* m_pList;
+		Node<T>* m_pNode;
+
+
+	public:
+		iterator();
+		~iterator();
+
+		friend class CList;
+	};
 
 };
 
