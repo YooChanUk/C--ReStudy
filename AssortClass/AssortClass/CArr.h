@@ -37,7 +37,7 @@ public:
 			//iterator가 알고있는 주소가 달라지거나 iterator가 end를 가리키고 있는 경우
 			if (m_pArr->m_pData != m_pData || -1 == m_iIdx)
 			{
-				assert(nullptr);
+				m_pData = m_pArr->m_pData;
 			}
 
 			return m_pData[m_iIdx];
@@ -81,6 +81,23 @@ public:
 
 		iterator& operator --()
 		{
+			if (m_iIdx == -1) //만약 끝부분이거나 데이터가 없으면 -1이기 때문에 m_iCount-1을해주면 된다.
+				//데이터가 없을경우 m_iCount는 0이기에 -1을 하면 -1이 된다.
+			{
+				m_iIdx = m_pArr->m_iCount-1;
+			}
+
+			if (m_iIdx <= 0)
+			{
+				//인덱스는 항상 0부터 시작한다.
+				//고로 0보다 작아질수 없게 만든다
+				m_iIdx = 0;
+			}
+			else
+			{
+				--m_iIdx;
+			}
+
 			return *this;
 		}
 

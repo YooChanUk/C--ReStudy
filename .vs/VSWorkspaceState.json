@@ -2,7 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\AssortClass",
-    "\\AssortClass\\AssortClass"
+    "\\AssortClass\\AssortClass",
+    "\\AssortCopy",
+    "\\AssortCopy\\AssortCopy"
   ],
   "SelectedNode": "\\AssortClass\\AssortClass\\CArr.h",
   "PreviewInSolutionExplorer": false

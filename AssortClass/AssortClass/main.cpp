@@ -25,16 +25,15 @@ int main()
 
 	CArr<int>::iterator myiter = myvector.begin();
 
+	int s = *myiter;
+
 	for (; myiter != myvector.end(); ++myiter)
 	{
 		cout << *myiter << endl;
 	}
 
-	myiter = myvector.begin();
-
-	//int iData = *(++myiter);
-	int iData = *(myiter++);
-	int iData2 = *myiter;
+	--myiter;
+	int r = *myiter;
 
 
 	return 0;
