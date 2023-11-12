@@ -48,15 +48,14 @@ int main()
 
 	CList<int> mylist;
 	mylist.push_back(100);
-	mylist.push_back(200);
-	mylist.push_back(300);
+	mylist.push_back(400);
+	mylist.push_back(500);
 
 	CList<int>::iterator listiter = mylist.begin();
-	*listiter = 150;
 
 	++listiter;
 
-	mylist.insert(listiter, 300);
+	listiter = mylist.insert(listiter, 250);
 
 	for (listiter = mylist.begin(); listiter != mylist.end(); ++listiter)
 	{

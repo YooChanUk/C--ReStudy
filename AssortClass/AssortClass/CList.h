@@ -249,28 +249,29 @@ typename CList<T>::iterator CList<T>::insert(const iterator& _iter,const T& _dat
 	}
 
 	//리스트에 추가되는 데이터를 저장 및 node생성
-	Node<T> pNode = new Node(_data, nullptr, nullptr);
+	Node<T>* pNode = new Node<T>(_data, nullptr, nullptr);
 
 	//iterator가 헤더노드를 가리키는경우
 	if (_iter.m_pNode == headerNode)
 	{
-		_iter.m_pNode.prevNode = pNode;
-		pNode.nextNode = _iter.m_pNode;
+		_iter.m_pNode->prevNode = pNode;
+		pNode->nextNode = _iter.m_pNode;
 
 		headerNode = pNode;
 	}
 	else
 	{
-		_iter.m_pNode.prevNode.nextNode = pNode;
-		_iter.m_pNode.prevNode = pNode;
-		pNode.prevNode = _iter.m_pNode.prevNode;
-		pNode.nextNode = _iter.m_pNode;
+		_iter.m_pNode->prevNode->nextNode = pNode;
+		pNode->prevNode = _iter.m_pNode->prevNode;
+
+		_iter.m_pNode->prevNode = pNode;
+		pNode->nextNode = _iter.m_pNode;
 	}
 
 
 
 	++count;
 
-	return iterator();
+	return iterator(this,pNode);
 }
 
