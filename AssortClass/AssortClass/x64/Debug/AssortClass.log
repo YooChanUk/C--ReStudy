@@ -1,2 +1,18 @@
 ﻿  main.cpp
-  AssortClass.vcxproj -> C:\Users\psbac\source\repos\C--ReStudy\AssortClass\x64\Debug\AssortClass.exe
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\CList.h(252,1): error C2955: 'Node': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\CList.h(7,1): message : 'Node' 선언을 참조하십시오.
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\CList.h(245,1): message : 클래스 템플릿 멤버 함수 'CList<int>::iterator CList<int>::insert(const CList<int>::iterator &,const T &)'을(를) 컴파일하는 중입니다.
+          with
+          [
+              T=int
+          ]
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\main.cpp(59,15): message : 'main'에서 'CList<int>::insert'에 대한 첫 번째 참조를 확인하세요.
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\main.cpp(49,13): message : 컴파일되는 클래스 템플릿 인스턴스화 'CList<int>'에 대한 참조를 확인하세요.
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\CList.h(252,1): error C2514: 'Node': 클래스 템플릿을 생성할 수 없습니다.
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\CList.h(7,1): message : 'Node' 선언을 참조하십시오.
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\CList.h(260,16): error C2440: '=': 'Node<T>'에서 'Node<T> *'(으)로 변환할 수 없습니다.
+          with
+          [
+              T=int
+          ]
+C:\Users\psbac\source\repos\C--ReStudy\AssortClass\AssortClass\CList.h(260,16): message : 이 변환을 수행할 수 있는 사용 가능한 사용자 정의 변환 연산자가 없거나 연산자를 호출할 수 없습니다.

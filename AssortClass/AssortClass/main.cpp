@@ -41,11 +41,27 @@ int main()
 		}
 	}
 
-	for (int i = 0; i < myvector.size(); ++i)
-	{
-		cout << myvector[i] << endl;
-	}
+	//for (int i = 0; i < myvector.size(); ++i)
+	//{
+	//	cout << myvector[i] << endl;
+	//}
 
+	CList<int> mylist;
+	mylist.push_back(100);
+	mylist.push_back(200);
+	mylist.push_back(300);
+
+	CList<int>::iterator listiter = mylist.begin();
+	*listiter = 150;
+
+	++listiter;
+
+	mylist.insert(listiter, 300);
+
+	for (listiter = mylist.begin(); listiter != mylist.end(); ++listiter)
+	{
+		cout << *listiter << endl;
+	}
 
 	return 0;
 }
