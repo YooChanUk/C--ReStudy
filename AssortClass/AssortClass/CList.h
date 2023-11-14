@@ -237,7 +237,54 @@ typename CList<T>::iterator CList<T>::end()
 template<typename T>
 typename CList<T>::iterator CList<T>::erase(iterator& _iter)
 {
-	return iterator();
+	//배열의 경우는 덮어씌우는 형식으로 삭제가 가능했다.
+	//덮어씌우고 카운트를 낮추면 그 뒤에서부터 넣고싶은 데이터를 덮어씌우면 됐지만
+	//리스트의 경우는 중간에 넣고 뺄수 있는것이기에 덮어씌우는형식은 안된다.
+	//특히나 리스트는 힙메모리를 쓰기때문에 그 부분의 노드를 delete해주어야 한다.
+	//고로 삭제하려는 이터레이터가 가리키는 노드의 prev와 next를 서로 이어주고
+	//본인은 삭제되어야한다.
+	//예외상황은 삭제할때 그 노드가
+	//1.헤더노드인경우 - 삭제했을때 그 다음 노드를 리턴
+	//2.테일노드인경우(1,2모두 카운트 낮추기) - 삭제했을때 그 전 노드를 리턴
+	//3.찾아간 노드의 주소가 맞지 않는 경우(assert처리)
+	//4.이터레이터가 엔드를 가리키는 경우
+	//삭제후 다음 노드 리턴 및 m_bVaild false로 변환(갱신해줘야지 true로 변경되게끔)
+
+	if (this != _iter.m_pList || end() == _iter || false == _iter.m_bVaild)
+	{
+		assert(nullptr);
+	}
+
+	iterator nextIter;
+
+	if (_iter.m_pNode == headerNode)
+	{
+		headerNode = _iter.m_pNode->nextNode;
+
+		nextIter = iterator(this, headerNode);
+	}
+	else if (_iter.m_pNode == tailNode)
+	{
+		tailNode = _iter.m_pNode->prevNode;
+		tailNode->nextNode = nullptr;
+
+		nextIter = end();
+	}
+	else
+	{
+		_iter.m_pNode->prevNode->nextNode = _iter.m_pNode->nextNode;
+		//이터가 가리키는 노드의 그전 노드의 다음노드는 이터가 가리키는 다음노드
+		_iter.m_pNode->nextNode->prevNode = _iter.m_pNode->prevNode;
+		//이터가 가리키는 노드의 다음 노드의 그전 노드는 이터가 가리키는 이전 노드
+
+		nextIter = iterator(this,_iter.m_pNode->nextNode);
+	}
+
+	delete(_iter.m_pNode);
+	--count;
+	_iter.m_bVaild = false;
+
+	return nextIter;
 }
 
 template<typename T>
