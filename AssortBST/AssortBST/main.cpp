@@ -41,6 +41,14 @@ struct tStdInfo
 	}
 };
 
+//¿­°ÅÇü
+enum MY_TYPE
+{
+	TYPE_1, //0
+	TYPE_2, //1
+	TYPE_2, //2
+};
+
 class Myclass
 {
 private:
